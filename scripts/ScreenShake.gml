@@ -1,0 +1,1 @@
+oGame.ScreenShakeAmount =argument0
