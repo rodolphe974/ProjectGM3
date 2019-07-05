@@ -25,11 +25,15 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_speed = 6 / room_speed
+            <string>State = "Idle";
+HalfFieldOfView = 45;
+ViewRange = 150;
+image_speed = 6 / room_speed;
 OriginalSpeed = 60/room_speed;
 speed = OriginalSpeed;
 direction = random(360);
 ResetShunts()
+
 </string>
           </argument>
         </arguments>

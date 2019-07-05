@@ -15,3 +15,6 @@ window_set_fullscreen(false);
 
 //Needed by GameMaker (?)
 //surface_resize(application_surface, ScreenWidth, ScreenHeigth);
+
+LoadInventory();
+SaveProgress();

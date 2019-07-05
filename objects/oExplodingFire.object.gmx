@@ -25,27 +25,38 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>// Facing adn speed
-image_angle = direction ;
-speed = OriginalSpeed ;
+            <string>//Some AI stuff
+if State = "Idle"{
+    //wander around aimlessly and may attention to player coming close
+    sprite_index = sExplodingFire;
+    // Iddle Facing and speed
+    image_angle = direction ;
+    speed = OriginalSpeed ;
+    if ICanSee(oPlayer) {
+        State = "Alert";
+    }
+}else if State = "Alert"{
+    // rush to the player
+    sprite_index = sExplodingFireAlert;
+    if ICanSee(oPlayer) {
+        //Go toward him
+        direction = point_direction(x,y,oPlayer.x,oPlayer.y);
+        if speed &lt; oPlayer.speed + 1/room_speed {
+            speed +=1/room_speed;
+        }
+    }else{
+        State = "Idle";
+    }
+}
+
 // Bouncing
 BounceOfWall()
 
-
-// Damage
-
-if HitByProjectile()
-{
-    ExplodeIntoChunks(12,oFireChunk);
-}
-
 // Burn the beetle
 IncomingBeetle = instance_place(x,y,oPlayer);
-
 if instance_exists(IncomingBeetle)
 {
-    
-    //Grow ourself
+     //Grow ourself
     image_xscale = image_xscale * 1.2;
     image_yscale = image_xscale;
     
@@ -57,6 +68,13 @@ if instance_exists(IncomingBeetle)
 hspeed = hspeed + ShuntX;
 vspeed = vspeed + ShuntY;
 ResetShunts();
+
+// Damage
+if HitByProjectile()
+{
+    ExplodeIntoChunks(12,oFireChunk);
+    ScreenShake(25);
+}
 </string>
           </argument>
         </arguments>

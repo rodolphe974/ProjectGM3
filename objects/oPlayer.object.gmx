@@ -61,25 +61,29 @@ ResetShunts();
 speed = 0
 
 // MOVEMENT
-if keyboard_check(ord('Z')) 
+direction = point_direction(oDirectionStick.guiX,oDirectionStick.guiY,oDirectionStick.stickX,oDirectionStick.stickY);
+speed = point_distance(oDirectionStick.guiX,oDirectionStick.guiY,oDirectionStick.stickX,oDirectionStick.stickY)/(oDirectionStick.radius*oDirectionStick.image_xscale)/room_speed; 
+
+/*
+if (keyboard_check(ord('Z')) ) 
 {
     vspeed = -MySpeed;
     image_speed = WalkSpeed ;
     sprite_index = sPlayer_UP;
 }
-if keyboard_check(ord('Q'))  
+if (keyboard_check(ord('Q')) )
 {
     hspeed = -MySpeed;
     image_speed = WalkSpeed ;
     sprite_index = sPlayer_LEFT;
 }
-if keyboard_check(ord('D'))
+if (keyboard_check(ord('D')) )
 {
     hspeed = MySpeed;
     image_speed = WalkSpeed ;
     sprite_index = sPlayer_RIGHT;
 }
-if keyboard_check(ord('S')) 
+if (keyboard_check(ord('S')) )
 {
     vspeed = MySpeed;
     image_speed = WalkSpeed ;
@@ -94,8 +98,10 @@ if keyboard_check(vk_nokey)
 {
     image_speed = 0;
     image_index = 0;
+    vspeed = 0;
+    hspeed = 0;
 }
-
+*/
 // Facing
 //image_angle = point_direction(x,y,mouse_x,mouse_y);
 
@@ -107,6 +113,13 @@ if Power &lt;PowerMax {
         with PowerUpCollected {instance_destroy()}
         audio_play_sound(aPowerUp,1,false);
         Power +=1 ;
+    }
+}else {
+    // go to next level
+    if room_exists(room_next(room))
+    {
+        room_goto_next();
+        SaveInventory();
     }
 }
 // Stay inside the room
@@ -165,20 +178,13 @@ if instance_exists(Incoming)
 
 }
 
-//Game Seve and load
-if keyboard_check_pressed(vk_f5){
-    SavePlayerData();
-}
-if keyboard_check_pressed(vk_f6){
-    LoadPlayerData();
-}
 </string>
           </argument>
         </arguments>
       </action>
     </event>
   </events>
-  <PhysicsObject>-1</PhysicsObject>
+  <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
   <PhysicsObjectShape>1</PhysicsObjectShape>
   <PhysicsObjectDensity>0.5</PhysicsObjectDensity>
@@ -189,10 +195,5 @@ if keyboard_check_pressed(vk_f6){
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>-1</PhysicsObjectKinematic>
-  <PhysicsShapePoints>
-    <point>0,0</point>
-    <point>32,0</point>
-    <point>32,32</point>
-    <point>0,32</point>
-  </PhysicsShapePoints>
+  <PhysicsShapePoints/>
 </object>
