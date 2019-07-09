@@ -4,7 +4,8 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions>
-    <extension index="0">extensions\Easy Mobile Controls</extension>
+    <extension index="0">extensions\prettylight</extension>
+    <extension index="1">extensions\Virtual Joysticks</extension>
   </NewExtensions>
   <sounds name="sound">
     <sound>sound\aSpit</sound>
@@ -45,28 +46,84 @@
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
-    <script>scripts\ExplodeIntoChunks.gml</script>
-    <script>scripts\ShrinkOrGrow.gml</script>
-    <script>scripts\BounceOfWall.gml</script>
-    <script>scripts\CanBepickedUp.gml</script>
-    <script>scripts\ResetShunts.gml</script>
     <scripts name="Menus">
       <script>scripts\DrawTextAndUpdateY.gml</script>
       <script>scripts\ButtonPressed.gml</script>
     </scripts>
-    <script>scripts\InitialiseRoom.gml</script>
-    <script>scripts\ScreenShake.gml</script>
-    <script>scripts\HitByProjectile.gml</script>
-    <script>scripts\SaveInventory.gml</script>
-    <script>scripts\SaveProgress.gml</script>
-    <script>scripts\LoadInventory.gml</script>
-    <script>scripts\LooseInventory.gml</script>
-    <script>scripts\LooseProgress.gml</script>
-    <script>scripts\LoadProgress.gml</script>
-    <script>scripts\ICanSee.gml</script>
-    <script>scripts\scr_get_analog_stick_axis.gml</script>
-    <script>scripts\scr_get_tilt_speed.gml</script>
+    <scripts name="prettylight">
+      <scripts name="pl">
+        <script>scripts\pl_init.gml</script>
+        <script>scripts\pl_set_vivid.gml</script>
+        <script>scripts\pl_set_blurring.gml</script>
+        <script>scripts\pl_option_set_ambience.gml</script>
+        <script>scripts\pl_option_set_blur.gml</script>
+        <script>scripts\pl_add.gml</script>
+        <script>scripts\pl_update.gml</script>
+        <script>scripts\pl_draw.gml</script>
+        <script>scripts\pl_end.gml</script>
+      </scripts>
+      <scripts name="pl_light">
+        <script>scripts\pl_light_init.gml</script>
+        <script>scripts\pl_light_get_alpha.gml</script>
+        <script>scripts\pl_light_set_alpha.gml</script>
+        <script>scripts\pl_light_get_radius.gml</script>
+        <script>scripts\pl_light_set_radius.gml</script>
+        <script>scripts\pl_light_get_color.gml</script>
+        <script>scripts\pl_light_set_color.gml</script>
+        <script>scripts\pl_light_update.gml</script>
+        <script>scripts\pl_light_draw.gml</script>
+        <script>scripts\pl_light_destroy.gml</script>
+      </scripts>
+    </scripts>
+    <scripts name="Virtual Joystick">
+      <script>scripts\vstick_set_frontsprite.gml</script>
+      <script>scripts\vstick_get_frontsprite.gml</script>
+      <script>scripts\vstick_set_backsprite.gml</script>
+      <script>scripts\vstick_get_backsprite.gml</script>
+      <script>scripts\vstick_get_active.gml</script>
+      <script>scripts\vstick_set_active.gml</script>
+      <script>scripts\vstick_set_radius.gml</script>
+      <script>scripts\vstick_get_radius.gml</script>
+      <script>scripts\vstick_set_y.gml</script>
+      <script>scripts\vstick_get_y.gml</script>
+      <script>scripts\vstick_set_x.gml</script>
+      <script>scripts\vstick_get_x.gml</script>
+      <script>scripts\vstick_get_yaxis.gml</script>
+      <script>scripts\vstick_get_xaxis.gml</script>
+      <script>scripts\vstick_get_direction.gml</script>
+      <script>scripts\vstick_get_deviation.gml</script>
+      <script>scripts\vstick_check.gml</script>
+      <script>scripts\vstick_check_pressed.gml</script>
+      <script>scripts\vstick_check_released.gml</script>
+      <script>scripts\vstick_draw.gml</script>
+      <script>scripts\vstick_step.gml</script>
+      <script>scripts\vstick_init.gml</script>
+    </scripts>
+    <scripts name="Game">
+      <script>scripts\ExplodeIntoChunks.gml</script>
+      <script>scripts\ShrinkOrGrow.gml</script>
+      <script>scripts\CanBepickedUp.gml</script>
+      <script>scripts\BounceOfWall.gml</script>
+      <script>scripts\ResetShunts.gml</script>
+      <script>scripts\InitialiseRoom.gml</script>
+      <script>scripts\ScreenShake.gml</script>
+      <script>scripts\SaveProgress.gml</script>
+      <script>scripts\LoadInventory.gml</script>
+      <script>scripts\LooseProgress.gml</script>
+      <script>scripts\HitByProjectile.gml</script>
+      <script>scripts\SaveInventory.gml</script>
+      <script>scripts\ICanSee.gml</script>
+      <script>scripts\LooseInventory.gml</script>
+      <script>scripts\LoadProgress.gml</script>
+      <script>scripts\IsBetween.gml</script>
+    </scripts>
   </scripts>
+  <shaders name="shaders">
+    <shaders name="prettylight">
+      <shader type="GLSLES">shaders\pl_shd_gaussian_horizontal.shader</shader>
+      <shader type="GLSLES">shaders\pl_shd_gaussian_vertical.shader</shader>
+    </shaders>
+  </shaders>
   <fonts name="fonts">
     <font>fonts\fTitle</font>
     <font>fonts\fMenu</font>
@@ -91,9 +148,6 @@
     <object>objects\oSolid</object>
     <object>objects\oMenu</object>
     <object>objects\oPowerUp</object>
-    <object>objects\oStick</object>
-    <object>objects\oFireStick</object>
-    <object>objects\oDirectionStick</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rStart</room>

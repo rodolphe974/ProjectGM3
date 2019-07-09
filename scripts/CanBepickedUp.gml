@@ -7,6 +7,5 @@ if instance_exists(Owner) = false{
         Owner = oPlayer.id;
         Owner.Weapon[Owner.WeaponCount] = self.id;
         Owner.WeaponCount +=1;
-        
     }
 }

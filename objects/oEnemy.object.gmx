@@ -32,8 +32,9 @@ image_speed = 6 / room_speed;
 OriginalSpeed = 60/room_speed;
 speed = OriginalSpeed;
 direction = random(360);
-ResetShunts()
-
+ResetShunts();
+pl_light_init(50,c_orange,0.1);
+depth = 1;
 </string>
           </argument>
         </arguments>

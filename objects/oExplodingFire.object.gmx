@@ -29,8 +29,6 @@
 if State = "Idle"{
     //wander around aimlessly and may attention to player coming close
     sprite_index = sExplodingFire;
-    // Iddle Facing and speed
-    image_angle = direction ;
     speed = OriginalSpeed ;
     if ICanSee(oPlayer) {
         State = "Alert";
@@ -48,7 +46,8 @@ if State = "Idle"{
         State = "Idle";
     }
 }
-
+// Facing and speed
+    image_angle = direction ;
 // Bouncing
 BounceOfWall()
 

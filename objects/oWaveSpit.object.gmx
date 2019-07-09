@@ -33,14 +33,15 @@ if instance_exists(Owner){
     
     x = Owner.x ;
     y = Owner.y ;
-    //image_angle = Owner.image_angle
+    image_angle = Owner.image_angle
     //image_angle = point_direction(x,y,mouse_x,mouse_y);
-    image_angle = point_direction(oFireStick.guiX,oFireStick.guiY,oFireStick.stickX,oFireStick.stickY); 
-
+    //image_angle = point_direction(oFireStick.guiX,oFireStick.guiY,oFireStick.stickX,oFireStick.stickY); 
+    image_angle = vstick_get_direction(1);
     
     if Owner.Weapon[Owner.SelectedWeaponIndex] = self.id{
         //Shooting
-        if mouse_check_button(mb_left) 
+        //if mouse_check_button(mb_left) 
+        if vstick_check(1)
         {
         
             MySpit = instance_create(x,y,oLiquidShot);

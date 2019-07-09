@@ -30,7 +30,8 @@ SelectedWeaponIndex = 0;
 Power = 5;
 PowerMax = 50;
 image_speed = 0;
-WalkSpeed = 4 / room_speed;
+MySpeed = 200/room_speed;
+//WalkSpeed = 4 / room_speed;
 ResetShunts();
 
 
@@ -57,14 +58,32 @@ ResetShunts();
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>MySpeed = 200/room_speed;
-speed = 0
+            <string>speed = 0
 
 // MOVEMENT
-direction = point_direction(oDirectionStick.guiX,oDirectionStick.guiY,oDirectionStick.stickX,oDirectionStick.stickY);
-speed = point_distance(oDirectionStick.guiX,oDirectionStick.guiY,oDirectionStick.stickX,oDirectionStick.stickY)/(oDirectionStick.radius*oDirectionStick.image_xscale)/room_speed; 
+//using the left stick
+direction = vstick_get_direction(2);
+speed = vstick_get_deviation(2)*MySpeed;
+image_speed = speed ;
+//facing
+if IsBetween(vstick_get_direction(2),45,135) 
+{
+    sprite_index = sPlayer_UP;
+}
+if IsBetween(vstick_get_direction(2),135,225)
+{
+    sprite_index = sPlayer_LEFT;
+}
+if IsBetween(vstick_get_direction(2),225,305)
+{
+    sprite_index = sPlayer_DOWN;
+}
+if (vstick_get_direction(2)&gt;=305 or vstick_get_direction(2)&lt;45)
+{
+    sprite_index = sPlayer_RIGHT;
+}
 
-/*
+/* //using keyboard
 if (keyboard_check(ord('Z')) ) 
 {
     vspeed = -MySpeed;
@@ -160,7 +179,6 @@ ResetShunts()
 //}
 
 //WEAPON SWITCH
-
 if mouse_check_button_pressed(mb_right) {
     //switch to next weapon
     SelectedWeaponIndex +=1;

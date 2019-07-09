@@ -33,16 +33,17 @@ if instance_exists(Owner){
     
     x = Owner.x ;
     y = Owner.y ;
-    //image_angle = Owner.image_angle
+    image_angle = Owner.image_angle
     //image_angle = point_direction(x,y,mouse_x,mouse_y);
-    image_angle = point_direction(oFireStick.guiX,oFireStick.guiY,oFireStick.stickX,oFireStick.stickY); 
-
+    //image_angle = point_direction(oFireStick.guiX,oFireStick.guiY,oFireStick.stickX,oFireStick.stickY); 
+    image_angle = vstick_get_direction(1);
     
     SecondSinceShot = SecondSinceShot + 1/room_speed;
     
     if Owner.Weapon[Owner.SelectedWeaponIndex] = self.id{
         //Shooting
-        if mouse_check_button(mb_left) and SecondSinceShot &gt;= SecondBetweeShots
+        //if mouse_check_button(mb_left) and SecondSinceShot &gt;= SecondBetweeShots
+        if vstick_check(1) and SecondSinceShot &gt;= SecondBetweeShots
         {
             SecondSinceShot = 0;
             MySpit = instance_create(x,y,oSpit);
