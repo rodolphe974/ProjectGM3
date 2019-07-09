@@ -153,6 +153,15 @@ if ScreenShakeAmount &gt; 0 {
 //Lighting
 pl_update();
 
+//DEV MODE
+if keyboard_check_pressed(ord('N')){
+    if room_exists(room_next(room))
+    {
+        room_goto_next();
+        SaveInventory();
+    }
+}
+
 </string>
           </argument>
         </arguments>
