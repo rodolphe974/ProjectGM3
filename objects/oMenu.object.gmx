@@ -26,6 +26,37 @@
           <argument>
             <kind>1</kind>
             <string>Mode = "Title" ;
+//Joysticks
+StickRadius = 100;
+StickIndent = 100;
+vstick_init(1,display_get_width() - StickRadius - StickIndent,display_get_height() - StickRadius - StickIndent,StickRadius,true,noone,noone);
+vstick_init(2,StickRadius+StickIndent,display_get_height() -StickRadius - StickIndent,StickRadius,true,noone,noone);
+//vstick_init(1,noone,noone,noone,true,noone,noone);
+//vstick_init(2,noone,noone,noone,true,noone,noone);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>vstick_step(01);
+vstick_step(02);
 </string>
           </argument>
         </arguments>
@@ -135,6 +166,8 @@ if keyboard_check(ord('R'))
         draw_rectangle  (BarIndent, BarTop, BarIndent + BarWidth, BarTop + BarHeight, true) ;
         draw_rectangle  (BarIndent, BarTop, BarIndent + BarWidth*PowerFraction, BarTop + BarHeight, false);
         draw_set_alpha (1);
+        vstick_draw(01);
+        vstick_draw(02);
     }
 }
 </string>

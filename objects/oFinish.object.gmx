@@ -27,7 +27,6 @@
             <kind>1</kind>
             <string>Mode = "Victory" ;
 if instance_exists(oPlayer) {with oPlayer {instance_destroy()}}
-window_set_fullscreen(false);
 
 </string>
           </argument>
